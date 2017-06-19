@@ -22,7 +22,7 @@ setup(
         'console_scripts': [
         ],
     },
-    description='Fit a set of 3D points ot a cylinder surface.',
+    description='Fit a set of 3D points to a cylinder surface.',
     long_description=open('README.rst').read(),
     classifiers=[
         'Programming Language :: Python :: 3',
