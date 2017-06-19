@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='cylinder_fitting',
-    version='0.0.1',
+    version='1.0.0',
     author='Xingjie Pan',
     author_email='xingjiepan@gmail.com',
     url='https://github.com/xingjiepan/cylinder_fitting',
