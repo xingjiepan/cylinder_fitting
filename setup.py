@@ -9,6 +9,7 @@ setup(
     author_email='xingjiepan@gmail.com',
     url='https://github.com/xingjiepan/cylinder_fitting',
     download_url='https://github.com/xingjiepan/cylinder_fitting/archive/1.0.0.tar.gz',
+    keywords = ['geometry', 'fitting-algorithm'],
     packages=[
         'cylinder_fitting',
     ],
