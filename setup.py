@@ -8,6 +8,7 @@ setup(
     author='Xingjie Pan',
     author_email='xingjiepan@gmail.com',
     url='https://github.com/xingjiepan/cylinder_fitting',
+    download_url='https://github.com/xingjiepan/cylinder_fitting/archive/1.0.0.tar.gz',
     packages=[
         'cylinder_fitting',
     ],
