@@ -3,3 +3,6 @@ __pycache__
 venv
 cylinder_fitting.egg-info
 .cache
+MANIFEST
+dist
+
