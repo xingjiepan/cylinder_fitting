@@ -17,6 +17,7 @@ setup(
         'numpy',
         'scipy',
         'pytest',
+        'matplotlib',
     ],
     entry_points={
         'console_scripts': [

@@ -5,28 +5,16 @@ import numpy as np
 np.seterr(all='raise')
 
 from cylinder_fitting import fit
-
-
-def rotation_matrix_from_axis_and_angle(u, theta):
-  '''Calculate a rotation matrix from an axis and an angle.'''
-
-  x = u[0]
-  y = u[1]
-  z = u[2]
-  s = np.sin(theta)
-  c = np.cos(theta)
-
-  return np.array([[c + x**2 * (1 - c), x * y * (1 - c) - z * s, x * z * (1 - c) + y * s],
-                   [y * x * (1 - c) + z * s, c + y**2 * (1 - c), y * z * (1 - c) - x * s ],
-                   [z * x * (1 - c) - y * s, z * y * (1 - c) + x * s, c + z**2 * (1 - c) ]])
+from cylinder_fitting import show_fit
+from cylinder_fitting import geometry
 
 
 def make_points_on_a_cylinder(theta, phi, C, r, N):
     '''Make N points on a cylinder defined by the center C, direction defined theta and phi and radius r.
     Also return the direction of the cylinder'''
     
-    M = np.dot(rotation_matrix_from_axis_and_angle(np.array([0, 0, 1]), phi),
-               rotation_matrix_from_axis_and_angle(np.array([1, 0, 0]), theta))
+    M = np.dot(geometry.rotation_matrix_from_axis_and_angle(np.array([0, 0, 1]), phi),
+               geometry.rotation_matrix_from_axis_and_angle(np.array([0, 1, 0]), theta))
 
     x = np.dot(M, np.array([1, 0, 0]))
     y = np.dot(M, np.array([0, 1, 0]))
@@ -46,6 +34,7 @@ def test_fit():
     
     w_fit, C_fit, r_fit = fit(data)
 
+    show_fit(w_fit, C_fit, r_fit, data)
     
     assert(np.absolute(1 - np.absolute(np.dot(w, w_fit))) < 1e-4)
 
