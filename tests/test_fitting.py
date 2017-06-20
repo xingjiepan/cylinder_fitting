@@ -31,7 +31,7 @@ def test_fit():
     C = np.array([0, 0, 0])
     r = 10
     data, w = make_points_on_a_cylinder(1, -0.3, C, r, 100)
-    
+
     w_fit, C_fit, r_fit = fit(data)
 
     show_fit(w_fit, C_fit, r_fit, data)

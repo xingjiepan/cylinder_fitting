@@ -72,7 +72,7 @@ def r(w, Xs):
 
     return np.sqrt(sum(np.dot(c - X, np.dot(P, c - X)) for X in Xs) / n)
 
-def fit(data, guess_angles=[0, 0]):
+def fit(data, guess_angles=None):
     '''Fit a list of data points to a cylinder surface. The algorithm implemented
     here is from David Eberly's paper "Fitting 3D Data with a Cylinder" from 
     https://www.geometrictools.com/Documentation/CylinderFitting.pdf
@@ -89,9 +89,27 @@ def fit(data, guess_angles=[0, 0]):
     '''
     Xs, t = preprocess_data(data)  
 
-    angles = minimize(lambda x : G(direction(x[0], x[1]), Xs),
-                guess_angles, method='Nelder-Mead', tol=1e-6).x
+    # Set the start points
 
-    w = direction(angles[0], angles[1])
+    start_points = [(0, 0), (np.pi / 2, 0), (np.pi / 2, np.pi / 2)]
+    if guess_angles:
+        start_points = guess_angles
+
+    # Fit the cylinder from different start points 
+
+    best_angles = start_points[0]
+    best_score = float('inf')
+
+    for sp in start_points:
+        fitted = minimize(lambda x : G(direction(x[0], x[1]), Xs),
+                    sp, method='Nelder-Mead', tol=1e-6)
+
+        print(fitted) ###DEBUG
+
+        if fitted.fun < best_score:
+            best_score = fitted.fun
+            best_angles = fitted.x
+
+    w = direction(best_angles[0], best_angles[1])
 
     return w, C(w, Xs) + t, r(w, Xs)
