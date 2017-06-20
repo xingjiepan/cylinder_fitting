@@ -86,6 +86,7 @@ def fit(data, guess_angles=None):
         Direction of the cylinder axis
         A point on the cylinder axis
         Radius of the cylinder
+        Fitting error (G function)
     '''
     Xs, t = preprocess_data(data)  
 
@@ -97,7 +98,7 @@ def fit(data, guess_angles=None):
 
     # Fit the cylinder from different start points 
 
-    best_angles = start_points[0]
+    best_fit = None
     best_score = float('inf')
 
     for sp in start_points:
@@ -106,8 +107,8 @@ def fit(data, guess_angles=None):
 
         if fitted.fun < best_score:
             best_score = fitted.fun
-            best_angles = fitted.x
+            best_fit = fitted
 
-    w = direction(best_angles[0], best_angles[1])
+    w = direction(best_fit.x[0], best_fit.x[1])
 
-    return w, C(w, Xs) + t, r(w, Xs)
+    return w, C(w, Xs) + t, r(w, Xs), best_fit.fun 

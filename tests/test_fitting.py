@@ -33,7 +33,7 @@ def test_fit():
     r = 10
     data, w = make_points_on_a_cylinder(1, -0.3, C, r, 100)
 
-    w_fit, C_fit, r_fit = fit(data)
+    w_fit, C_fit, r_fit, fit_err = fit(data)
 
     #show_G_distribution(data)
 
