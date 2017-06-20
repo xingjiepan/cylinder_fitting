@@ -6,6 +6,7 @@ np.seterr(all='raise')
 
 from cylinder_fitting import fit
 from cylinder_fitting import show_fit
+from cylinder_fitting import show_G_distribution
 from cylinder_fitting import geometry
 
 
@@ -33,6 +34,8 @@ def test_fit():
     data, w = make_points_on_a_cylinder(1, -0.3, C, r, 100)
 
     w_fit, C_fit, r_fit = fit(data)
+
+    #show_G_distribution(data)
 
     show_fit(w_fit, C_fit, r_fit, data)
     

@@ -102,9 +102,7 @@ def fit(data, guess_angles=None):
 
     for sp in start_points:
         fitted = minimize(lambda x : G(direction(x[0], x[1]), Xs),
-                    sp, method='Nelder-Mead', tol=1e-6)
-
-        print(fitted) ###DEBUG
+                    sp, method='Powell', tol=1e-6)
 
         if fitted.fun < best_score:
             best_score = fitted.fun
