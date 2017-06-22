@@ -8,6 +8,7 @@ from cylinder_fitting import fit
 from cylinder_fitting import show_fit
 from cylinder_fitting import show_G_distribution
 from cylinder_fitting import geometry
+from cylinder_fitting import fitting_rmsd
 
 
 def make_points_on_a_cylinder(theta, phi, C, r, N):
@@ -36,6 +37,8 @@ def test_fit():
     w_fit, C_fit, r_fit, fit_err = fit(data)
 
     #show_G_distribution(data)
+
+    print("Fitting RMSD =", fitting_rmsd(w_fit, C_fit, r_fit, data))
 
     show_fit(w_fit, C_fit, r_fit, data)
     

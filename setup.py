@@ -4,11 +4,11 @@ from distutils.core import setup
 
 setup(
     name='cylinder_fitting',
-    version='1.1.3',
+    version='1.1.4',
     author='Xingjie Pan',
     author_email='xingjiepan@gmail.com',
     url='https://github.com/xingjiepan/cylinder_fitting',
-    download_url='https://github.com/xingjiepan/cylinder_fitting/archive/1.1.3.tar.gz',
+    download_url='https://github.com/xingjiepan/cylinder_fitting/archive/1.1.4.tar.gz',
     keywords = ['geometry', 'fitting-algorithm'],
     packages=[
         'cylinder_fitting',
